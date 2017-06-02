@@ -15,7 +15,7 @@ type Github struct {
 	c   *github.Client
 }
 
-func NewGithub(token string) *Github {
+func NewGithub(token string) harvester.Pitchfork {
 	c := http.DefaultClient
 	ctx := context.Background()
 	if token != "" {

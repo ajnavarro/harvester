@@ -18,7 +18,7 @@ type Twitter struct {
 	c *twitter.Client
 }
 
-func NewTwitter(config *TwitterConfig) *Twitter {
+func NewTwitter(config *TwitterConfig) harvester.Pitchfork {
 	c := oauth1.NewConfig(config.ConsumerKey, config.ConsumerSecret)
 	token := oauth1.NewToken(config.Token, config.TokenSecret)
 	httpClient := c.Client(oauth1.NoContext, token)
