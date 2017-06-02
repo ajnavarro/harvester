@@ -25,10 +25,11 @@ func TestSomething(t *testing.T) {
 		pitchfork.NewGithub(os.Getenv("GITHUB_TOKEN")),
 		pitchfork.NewTwitter(tc),
 		pitchfork.NewWeb(),
-	})
+		pitchfork.NewKeybase(),
+	}, 50)
 
 	data, err := farmer.Farm(harvester.Seeds{
-		harvester.GithubUser:  "some",
+		harvester.GithubUser: "some",
 	})
 
 	assert.NoError(t, err)

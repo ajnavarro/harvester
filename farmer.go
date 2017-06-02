@@ -9,15 +9,17 @@ type Farmer struct {
 	maxLoops   int
 }
 
-func NewFarmer(pitchforks []Pitchfork) *Farmer {
+func NewFarmer(pitchforks []Pitchfork, maxLoops int) *Farmer {
+	if maxLoops == 0 {
+		maxLoops = 50
+	}
+
 	return &Farmer{
 		pitchforks: pitchforks,
-		// TODO parametrize this
-		maxLoops: 100,
+		maxLoops:   maxLoops,
 	}
 }
 
-// TODO change Data to Seeds
 func (f *Farmer) Farm(s Seeds) (Data, error) {
 	d := s.ToData()
 	loops := 0

@@ -32,10 +32,10 @@ func (p *Twitter) Name() string {
 	return "twitter"
 }
 func (p *Twitter) Harvest(d harvester.Data) error {
-	metadatas := d[harvester.TwitterUser]
+	meta := d[harvester.TwitterUser]
 
 	var twitterUsers []string
-	for _, m := range metadatas {
+	for _, m := range meta {
 		twitterUsers = append(twitterUsers, m.Value)
 	}
 
@@ -54,15 +54,12 @@ func (p *Twitter) Harvest(d harvester.Data) error {
 	for _, u := range users {
 		d.Add(harvester.Description, u.Description, p.Name())
 		d.Add(harvester.Email, u.Email, p.Name())
-
 		d.Add(harvester.Language, u.Lang, p.Name())
 		d.Add(harvester.Location, u.Location, p.Name())
 		d.Add(harvester.Name, u.Name, p.Name())
 		d.Add(harvester.Avatar, u.ProfileBannerURL, p.Name())
 		d.Add(harvester.Avatar, u.ProfileImageURL, p.Name())
-
-		// TODO add timezone
-		d.Add(harvester.Location, u.Timezone, p.Name())
+		d.Add(harvester.Timezone, u.Timezone, p.Name())
 	}
 
 	return nil
