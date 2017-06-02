@@ -13,7 +13,7 @@ import (
 type Web struct {
 }
 
-func NewWeb() *Web {
+func NewWeb() harvester.Pitchfork {
 	return &Web{}
 }
 func (p *Web) Name() string {
